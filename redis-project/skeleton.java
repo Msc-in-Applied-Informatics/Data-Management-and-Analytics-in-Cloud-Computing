@@ -50,7 +50,18 @@ public class skeleton {
                 }
                 
             } else if (choice.equals("Q")) {
-                // TODO: Υλοποίηση αναζήτησης
+                System.out.print("Αναζήτηση Τίτλου: ");
+                String title = scanner.nextLine();
+                String key = title.toLowerCase();
+                String movieHashKey = "movie:" + key;
+
+                if(jedis.exists(movieHashKey)){
+                    Map<String, String> movie = jedis.hgetAll(movieHashKey);
+                    System.out.println(movie);
+                }else{
+                    System.out.println("Η ταινία με τίτλο " + title + " δεν βρέθηκε" );
+                }
+                
             } else if (choice.equals("S")) {
                 // TODO: Υλοποίηση στατιστικών
             } else if (choice.equals("X")) {
