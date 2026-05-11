@@ -1,4 +1,5 @@
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.commands.ProtocolCommand;
 import java.io.*;
 import java.util.*;
 
@@ -18,21 +19,22 @@ public class skeleton {
             String choice = scanner.nextLine().toUpperCase();
             
             if (choice.equals("I")) {
-                
+                // Title
                 System.out.print("Τίτλος: ");
                 String title = scanner.nextLine();
-
+                // Director
                 System.out.print("Σκηνοθέτης: ");
                 String director = scanner.nextLine();
-
+                // Year
                 System.out.print("Έτος: ");
                 String year = scanner.nextLine();
 
                 String key = title.toLowerCase();
-                
+                // Create hashKey for database
                 String movieHashKey = "movie:" + key;
                 String watchListKey = "watchlist:" + key;
 
+                // Check if already exist the key
                 if(jedis.exists(movieHashKey)){
                     jedis.sadd(watchListKey, username);
                     System.out.println("Η ταινία προστέθηκε στα watchlist");
@@ -76,8 +78,79 @@ public class skeleton {
                     jedis.lpush(historyKey, title);
 
                     
-                }else{
-                    System.out.println("Η ταινία με τίτλο " + title + " δεν βρέθηκε" );
+                }else {
+
+                    String fuzzyQuery = "";
+
+                    String[] words = title.split(" ");
+
+                    for (String word : words) {
+                        fuzzyQuery += "%" + word + "% ";
+                    }
+
+                    fuzzyQuery = fuzzyQuery.trim();
+
+                    Object result = jedis.sendCommand(
+                        new ProtocolCommand() {
+                            public byte[] getRaw() {
+                                return "FT.SEARCH".getBytes();
+                            }
+                        },
+                        "movieIdx",
+                        fuzzyQuery
+                    );
+
+                    List<Object> searchResults = (List<Object>) result;
+
+                    long total = (Long) searchResults.get(0);
+
+                    if (total > 0) {
+                        System.out.println("Βρέθηκαν παρόμοιες ταινίες:");
+
+                        List<String> movieOptions = new ArrayList<>();
+
+                        int option = 1;
+
+                        for (int j = 1; j < searchResults.size(); j += 2) {
+                            String foundMovieKey = new String((byte[]) searchResults.get(j));
+                            Map<String, String> movie = jedis.hgetAll(foundMovieKey);
+                            movieOptions.add(foundMovieKey);
+                            System.out.println(option + ". " + movie.get("title"));
+                            option++;
+                        }
+
+                        System.out.print("Επιλέξτε αριθμό (0 για ακύρωση): ");
+
+                        int selected = Integer.parseInt(scanner.nextLine());
+
+                        if (selected > 0 && selected <= movieOptions.size()) {
+
+                            String selectedMovieKey = movieOptions.get(selected - 1);
+
+                            Map<String, String> movie = jedis.hgetAll(selectedMovieKey);
+
+                            String selectedWatchlistKey = "watchlist:" + movie.get("title").toLowerCase();
+
+                            jedis.sadd(selectedWatchlistKey, username);
+
+                            long length = jedis.scard(selectedWatchlistKey);
+
+                            System.out.println("Βρέθηκε:");
+                            System.out.println(movie);
+
+                            System.out.println("Συνολικό πλήθος χρηστών: " + length);
+                            // Trending
+                            jedis.zincrby("movie:trending", 1, selectedMovieKey);
+                            // History
+                            String historyKey = "user:" + username.toLowerCase() + ":history";
+
+                            if (jedis.llen(historyKey) == 5) jedis.rpop(historyKey);
+
+                            jedis.lpush(historyKey, movie.get("title"));
+                        }
+                    } else {
+                        System.out.println("Η ταινία με τίτλο " + title + " δεν βρέθηκε");
+                    }
                 }
                 
             } else if (choice.equals("S")) {
