@@ -24,26 +24,16 @@ public class skeleton {
             String choice = scanner.nextLine().toUpperCase();
 
             if (choice.equals("I")) {
-
                 insertMovie(jedis, scanner, username);
-
             } else if (choice.equals("Q")) {
-
                 queryMovie(jedis, scanner, username);
-
             } else if (choice.equals("S")) {
-
                 showStatistics(jedis, username);
-
             } else if (choice.equals("X")) {
-
                 System.out.println("Έξοδος...");
                 break;
-
             } else {
-
                 System.out.println("Μη έγκυρη επιλογή.");
-
             }
         }
 
@@ -143,13 +133,16 @@ public class skeleton {
         fuzzyQuery = fuzzyQuery.trim();
 
         Object result = jedis.sendCommand(
-            new ProtocolCommand() {
-                public byte[] getRaw() {
-                    return "FT.SEARCH".getBytes();
-                }
-            },
-            "movieIdx",
-            fuzzyQuerye
+
+                new ProtocolCommand() {
+
+                    public byte[] getRaw() {
+                        return "FT.SEARCH".getBytes();
+                    }
+                },
+
+                "movieIdx",
+                fuzzyQuery
         );
 
         List<Object> searchResults = (List<Object>) result;
@@ -258,6 +251,7 @@ public class skeleton {
         for (String key : watchlists) {
             String movie = key.replace("watchlist:", "");
             long users = jedis.scard(key);
+
             System.out.println(movie + " -> " + users);
         }
     }
