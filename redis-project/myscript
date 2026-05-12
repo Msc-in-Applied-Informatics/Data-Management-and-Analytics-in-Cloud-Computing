@@ -1,0 +1,251 @@
+Script started on 2026-05-12 18:09:04+03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="197" LINES="11"]
+[?2004h]0;dbtech@debian: ~/Desktop/Data-Management-and-Analytics-in-Cloud-Computing/redis-project[01;32mdbtech@debian[00m:[01;34m~/Desktop/Data-Management-and-Analytics-in-Cloud-Computing/redis-project[00m$ java -cp ".:lib/jedis-5.1.0.jar" skeleton
+[?2004lΕισάγετε το username σας: Nikos
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: I
+Τίτλος:  I  Inception
+Σκηνοθέτης: Christopher Nolan
+Έτος: 2010
+Η ταινία καταχωρήθηκε επιτυχώς.
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: I
+Τίτλος: The Matrix
+Σκηνοθέτης: Wachowskils  s
+Έτος: 20  1999
+Η ταινία καταχωρήθηκε επιτυχώς.
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: I  
+Τίτλος: I Harry Potter 1
+Σκηνοθέτης: Chris Columbus
+Έτος: 2001
+Η ταινία καταχωρήθηκε επιτυχώς.
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: I I
+Τίτλος: Harry Potter 2
+Σκηνοθέτης: Chris Columbus
+Έτος: 2002
+Η ταινία καταχωρήθηκε επιτυχώς.
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: I
+Τίτλος: Inception
+Σκηνοθέτης: Director
+Έτος: 2020  20
+Η ταινία προστέθηκε στα watchlist
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Inception
+Βρέθηκε:
+{title=Inception, year=2010, director=Christopher Nolan}
+Συνολικό πλήθος χρηστών: 1
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Incepton
+Βρέθηκαν παρόμοιες ταινίες:
+1. Inception
+Επιλέξτε αριθμό (0 για ακύρωση): 1
+Βρέθηκε:
+{title=Inception, year=2010, director=Christopher Nolan}
+Συνολικό πλήθος χρηστών: 1
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Harry Potter   t ter
+Βρέθηκαν παρόμοιες ταινίες:
+1. Harry Potter 1
+2. Harry Potter 2
+Επιλέξτε αριθμό (0 για ακύρωση): 2
+Βρέθηκε:
+{title=Harry Potter 2, year=2002, director=Chris Columbus}
+Συνολικό πλήθος χρηστών: 1
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: The Matrix
+Βρέθηκε:
+{title=The Matrix, year=1999, director=Wachowskis}
+Συνολικό πλήθος χρηστών: 1
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Harry Potter 2
+Βρέθηκε:
+{title=Harry Potter 2, year=2002, director=Chris Columbus}
+Συνολικό πλήθος χρηστών: 1
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: S
+~~~~Top Ταινίες~~~~
+Top-1 :{title=Inception, year=2010, director=Christopher Nolan}
+Top-2 :{title=Harry Potter 2, year=2002, director=Chris Columbus}
+Top-3 :{title=The Matrix, year=1999, director=Wachowskis}
+~~~~Top 5 Αναζητήσεις~~~~
+-1: Harry Potter 2
+-2: The Matrix
+-3: Harry Potter 2
+-4: Inception
+-5: Inception
+~~~~Popularity Metrics~~~~
+harry potter 1 -> 1
+harry potter 2 -> 1
+inception -> 1
+the matrix -> 1
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: X
+Έξοδος...
+[?2004h]0;dbtech@debian: ~/Desktop/Data-Management-and-Analytics-in-Cloud-Computing/redis-project[01;32mdbtech@debian[00m:[01;34m~/Desktop/Data-Management-and-Analytics-in-Cloud-Computing/redis-project[00m$ java -cp ".:lib/jedis-5.1.0.jar" skeleton
+[?2004lΕισάγετε το username σας: Miltos
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: In  I
+Τίτλος: Inception
+Σκηνοθέτης: test
+Έτος: 2020
+Η ταινία προστέθηκε στα watchlist
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Inceptio  ion
+Βρέθηκε:
+{title=Inception, year=2010, director=Christopher Nolan}
+Συνολικό πλήθος χρηστών: 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: S
+~~~~Top Ταινίες~~~~
+Top-1 :{title=Inception, year=2010, director=Christopher Nolan}
+Top-2 :{title=Harry Potter 2, year=2002, director=Chris Columbus}
+Top-3 :{title=The Matrix, year=1999, director=Wachowskis}
+~~~~Top 5 Αναζητήσεις~~~~
+-1: Inception
+~~~~Popularity Metrics~~~~
+harry potter 1 -> 1
+harry potter 2 -> 1
+inception -> 2
+the matrix -> 1
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: The Matr
+Η ταινία με τίτλο the matr δεν βρέθηκε
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: The Matrix
+Βρέθηκε:
+{title=The Matrix, year=1999, director=Wachowskis}
+Συνολικό πλήθος χρηστών: 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: S
+~~~~Top Ταινίες~~~~
+Top-1 :{title=Inception, year=2010, director=Christopher Nolan}
+Top-2 :{title=The Matrix, year=1999, director=Wachowskis}
+Top-3 :{title=Harry Potter 2, year=2002, director=Chris Columbus}
+~~~~Top 5 Αναζητήσεις~~~~
+-1: The Matrix
+-2: Inception
+~~~~Popularity Metrics~~~~
+harry potter 1 -> 1
+harry potter 2 -> 1
+inception -> 2
+the matrix -> 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Harry Potter
+Βρέθηκαν παρόμοιες ταινίες:
+1. Harry Potter 1
+2. Harry Potter 2
+Επιλέξτε αριθμό (0 για ακύρωση): 1
+Βρέθηκε:
+{title=Harry Potter 1, year=2001, director=Chris Columbus}
+Συνολικό πλήθος χρηστών: 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Harry Potter 1
+Βρέθηκε:
+{title=Harry Potter 1, year=2001, director=Chris Columbus}
+Συνολικό πλήθος χρηστών: 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: s
+~~~~Top Ταινίες~~~~
+Top-1 :{title=Inception, year=2010, director=Christopher Nolan}
+Top-2 :{title=The Matrix, year=1999, director=Wachowskis}
+Top-3 :{title=Harry Potter 2, year=2002, director=Chris Columbus}
+~~~~Top 5 Αναζητήσεις~~~~
+-1: Harry Potter 1
+-2: Harry Potter 1
+-3: The Matrix
+-4: Inception
+~~~~Popularity Metrics~~~~
+harry potter 1 -> 2
+harry potter 2 -> 1
+inception -> 2
+the matrix -> 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: Q
+Αναζήτηση Τίτλου: Harry Potter 2
+Βρέθηκε:
+{title=Harry Potter 2, year=2002, director=Chris Columbus}
+Συνολικό πλήθος χρηστών: 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: S
+~~~~Top Ταινίες~~~~
+Top-1 :{title=Inception, year=2010, director=Christopher Nolan}
+Top-2 :{title=Harry Potter 2, year=2002, director=Chris Columbus}
+Top-3 :{title=The Matrix, year=1999, director=Wachowskis}
+~~~~Top 5 Αναζητήσεις~~~~
+-1: Harry Potter 2
+-2: Harry Potter 1
+-3: Harry Potter 1
+-4: The Matrix
+-5: Inception
+~~~~Popularity Metrics~~~~
+harry potter 1 -> 2
+harry potter 2 -> 2
+inception -> 2
+the matrix -> 2
+
+--- Μενού Redis Movies ---
+(I)nsert Movie | (Q)uery | (S)tatistics | e(X)it
+Επιλογή: X
+Έξοδος...
+[?2004h]0;dbtech@debian: ~/Desktop/Data-Management-and-Analytics-in-Cloud-Computing/redis-project[01;32mdbtech@debian[00m:[01;34m~/Desktop/Data-Management-and-Analytics-in-Cloud-Computing/redis-project[00m$ [?2004l
+exit
+
+Script done on 2026-05-12 18:16:56+03:00 [COMMAND_EXIT_CODE="0"]

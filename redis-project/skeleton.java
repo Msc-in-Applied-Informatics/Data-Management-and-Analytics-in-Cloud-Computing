@@ -10,6 +10,31 @@ public class skeleton {
         // Σύνδεση με το Redis
         Jedis jedis = new Jedis("localhost", 6379);
 
+        try {
+            jedis.sendCommand(
+                new ProtocolCommand() {
+                    public byte[] getRaw() {
+                        return "FT.CREATE".getBytes();
+                    }
+                },
+                "movieIdx",
+                "ON",
+                "HASH",
+                "PREFIX",
+                "1",
+                "movie:",
+                "SCHEMA",
+                "title",
+                "TEXT",
+                "director",
+                "TEXT",
+                "year",
+                "TEXT"
+            );
+        } catch (Exception e) {
+            // index already exists
+        }
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Εισάγετε το username σας: ");
@@ -122,11 +147,17 @@ public class skeleton {
 
     public static void fuzzySearch(Jedis jedis, Scanner scanner, String username, String title) {
 
+        title = title.toLowerCase();
+
         String fuzzyQuery = "";
 
         String[] words = title.split(" ");
 
         for (String word : words) {
+            if(word.equals("the") || word.equals("a") || word.equals("an")) {
+                continue;
+            }
+
             fuzzyQuery += "%" + word + "% ";
         }
 
